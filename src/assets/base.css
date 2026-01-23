@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+
+@theme {
+
+  --color-primary: oklch(0.7234 0.1854 1.78);
+  --color-secondary: oklch(0.9603 0.0345 350.54);
+
+  --spacing-xl: 3rem;
+  --spacing-lg: 2.25rem;
+  --spacing-md: 1.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-xs: 0.25rem;
+
+  --text-caption: 0.65rem;
+
+  --default-font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  height: 100dvh;
+}
