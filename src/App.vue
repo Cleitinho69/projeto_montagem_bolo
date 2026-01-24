@@ -53,6 +53,7 @@ onMounted(async () => {
     confStore.changeConfeitaria(data.confeitaria)
     data.etapas.forEach((et) => etapasStore.addEtapas(et))
     setColor(confStore.cor_princ, confStore.cor_sec)
+    document.title = confStore.nome
   } catch {
     router.push('/404')
     throw new Error('Essa confeitaria não existe')
@@ -92,6 +93,7 @@ const backPage = () => {
   isEntrando.value = false;
 
   setColor(confStore.cor_princ, confStore.cor_sec)
+  document.title = confStore.nome
 }
 
 const resetAll = () => {
