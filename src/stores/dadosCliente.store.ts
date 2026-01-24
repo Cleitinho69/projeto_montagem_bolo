@@ -9,7 +9,7 @@ const useDadosClienteStore = defineStore('dadosCliente', {
     recebimento: 'entrega',
     cep: '',
     rua: '',
-    numero: null,
+    numero: '',
     bairro: '',
     cidade: '',
     referencia: '',
