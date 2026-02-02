@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 interface StateEncomenda {
-  code: string
+  code: string|null
   etapas: StateEtapa[]
   estilo: StateEstilo
 }
@@ -21,7 +21,7 @@ interface StateOpcoes {
 
 const useEncomendaStore = defineStore('encomenda', {
   state: (): StateEncomenda => ({
-    code:'',
+    code:null,
     etapas: [],
     estilo: { id: 0 },
   }),

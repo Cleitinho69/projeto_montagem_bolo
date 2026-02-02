@@ -16,7 +16,7 @@ interface ResGetEstilo {
 
 export const IndexService = {
   async getInitialData(slug: string): Promise<ResGetInitial> {
-    const data = (await api.get(`/${slug}/encomenda`)).data;
+    const data = (await api.get<ResGetInitial>(`/${slug}/encomenda`)).data;
     return data;
   },
   async getOpcoes(slug: string, idEtapa: number) {

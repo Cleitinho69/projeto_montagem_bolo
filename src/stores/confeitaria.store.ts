@@ -8,11 +8,13 @@ const useConfeitariaStore = defineStore('confeitaria', {
     slug: '',
     cor_princ: '',
     cor_sec: '',
-    logo: '',
+    logo_url: '',
+    telefone:'',
   }),
   actions: {
     changeConfeitaria(newConf: Confeitaria) {
       this.$state = newConf
+      this.$state.telefone.trim().replace(/\D/g, '')
     },
   },
   persist: {

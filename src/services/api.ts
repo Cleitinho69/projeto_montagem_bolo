@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { AxiosInstance } from 'axios';
 
-export const url = 'https://saas.devbyteztudios.com.br';
+export const url = 'https://dash.bakerfast.com.br';
 
 const api: AxiosInstance = axios.create({
   baseURL: `${url}/api`,

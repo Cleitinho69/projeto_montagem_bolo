@@ -4,7 +4,8 @@ export interface Confeitaria {
   slug: string,
   cor_princ: string,
   cor_sec: string,
-  logo: string
+  logo_url: string,
+  telefone:string,
 }
 
 export interface Etapa {

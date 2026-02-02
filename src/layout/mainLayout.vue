@@ -2,9 +2,8 @@
 import { ProgressBar, Avatar } from 'primevue'
 import useConfeitariaStore from '@/stores/confeitaria.store'
 import useEtapasStore from '@/stores/etapas.store';
-import { computed,  } from 'vue';
+import { computed } from 'vue';
 import { faseAtual } from '@/constants';
-import { url } from '@/services/api'
 
 const confStore = useConfeitariaStore();
 const etapasStore = useEtapasStore();
@@ -18,7 +17,7 @@ const progress = computed(()=>{
   <header class="bg-primary h-25 rounded-b-[35px] flex justify-center items-center">
     <div class="flex gap-2">
       <Avatar
-        :image="url+confStore.logo"
+        :image="confStore.logo_url"
         class="!w-13 !h-13"
         shape="circle"
       />

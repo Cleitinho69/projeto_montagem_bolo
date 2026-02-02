@@ -44,14 +44,18 @@ watch(
     if (etapaAtual.value) {
       const slug = confStore.slug.trim().toLowerCase()
 
-      const { opcoes } = await indexService.getOpcoes(slug, etapaAtual.value.id)
+      try{
+        const { opcoes } = await indexService.getOpcoes(slug, etapaAtual.value.id)
+        
+        faseAtual.value = props.ordem;
 
-      faseAtual.value = props.ordem;
+        opcoesEscolhidas.value =
+          encomendaStore.etapas.find((et) => et.id == etapaAtual.value?.id)?.opcoes ?? []
 
-      opcoesEscolhidas.value =
-        encomendaStore.etapas.find((et) => et.id == etapaAtual.value?.id)?.opcoes ?? []
-
-      opcoes.forEach((op) => opcoesStore.addOpcao(op, opcoesEscolhidas.value))
+        opcoes.forEach((op) => opcoesStore.addOpcao(op, opcoesEscolhidas.value))
+      }catch{
+        proximaEtapa();
+      }
     }
   }
 )
@@ -147,10 +151,10 @@ const voltarEtapa = () => {
           <img class="h-15" :src="url + etapaAtual?.icone" alt="" v-else />
         </div>
         <div class="flex flex-col justify-center items-center">
-          <h3 class="text-lg/8 font-bold">
+          <h3 class="text-lg/5 text-center font-bold">
             {{ opcao.nome }}
           </h3>
-          <div class="text-center text-caption/3 font-medium text-gray-400 line-clamp-4 text-wrap">
+          <div class=" mt-xs text-center text-caption font-medium text-gray-400 line-clamp-4 text-wrap">
             {{ opcao.descricao }}
           </div>
         </div>

@@ -49,7 +49,7 @@ const generateWhatsAppLink = () => {
     `Poderia me confirmar o recebimento?`
   );
 
-  return `${baseUrl}?phone=${"5511916131728"}&text=${message}`;
+  return `${baseUrl}?phone=55${confStore.telefone}&text=${message}`;
 }
 
 const enviarMensagem = async() => {
@@ -94,6 +94,7 @@ const finalizar = async () => {
     encomendaStore.code = data.code;
   } catch (error) {
     console.error(error)
+    alert(error)
     throw error
   } finally {
     criandoEncomenda.value = false;

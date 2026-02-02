@@ -51,9 +51,9 @@ const voltar = () => {
     <h2 class="text-2xl font-bold">Escolha um estilo:</h2>
     <span class="text-sm/15 text-gray-600">{{ estilosStore.estilos.length }} estilos especiais para tornar o seu bolo
       especial</span>
-    <ul class="flex flex-wrap gap-3 mt-md pb-24">
+    <ul class="flex flex-wrap gap-3 justify-center mt-md pb-24">
       <li v-for="estilo in estilosStore.estilos" :key="estilo.id"
-        class="card relative w-40 h-60 overflow-hidden rounded-2xl" :class="estilo.select ? 'border-4 border-primary' : ''"
+        class="card relative w-40 h-60 overflow-hidden rounded-2xl" :class="estilo.select ? 'border-4 border-primary transition-all duration-300' : ''"
         @click="selectEstilo(estilo)">
         <img class="w-full h-full object-cover contrast-80 brightness-80" :src="url + estilo.imagem" alt="" />
         <div class="absolute inset-0 text-white flex flex-col justify-end p-2">
