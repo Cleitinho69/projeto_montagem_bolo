@@ -7,6 +7,8 @@ import type { ClienteData } from '@/types'
 import router from '@/router'
 import useConfeitariaStore from '@/stores/confeitaria.store'
 import { faseAtual } from '@/constants'
+import api from '@/services/api'
+import { IndexService } from '@/services'
 
 const invalidCep = ref(false)
 const dadosClienteStore = useDadosClienteStore()
@@ -79,13 +81,30 @@ const voltar = () => {
   })
 }
 
+
+// CHAMAR A API PARA AS DATAS
+const indexService = IndexService
+const slug = confStore.slug.trim().toLowerCase()
+const blockDates = ref<Date[]>([]);
 onMounted(() => {
   const today = new Date();
   const futureDate = new Date();
   futureDate.setDate(today.getDate() + 5);
   futureDate.setHours(0, 0, 0, 0);
   minSelectableDate.value = futureDate;
+  getBlockDates();
 })
+
+
+const getBlockDates = async () =>{
+  const datesArray = await indexService.getBlockDates(slug);
+  datesArray.map((date:string)=>{
+      blockDates.value.push(new Date(date))
+  })
+}
+
+
+
 </script>
 
 <template>
@@ -114,7 +133,7 @@ onMounted(() => {
           <label for="telefone">Data Entrega*</label>
           <IconField>
             <InputIcon class="pi pi-calendar !text-primary" />
-            <DatePicker v-model="formData.dataEntrega" dateFormat="dd/mm/yy" :min-date="minSelectableDate"/>
+            <DatePicker v-model="formData.dataEntrega" dateFormat="dd/mm/yy" :min-date="minSelectableDate" :disabled-dates="blockDates"/>
           </IconField>
         </div>
 
