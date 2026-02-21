@@ -99,8 +99,16 @@ onMounted(() => {
 const getBlockDates = async () =>{
   const datesArray = await indexService.getBlockDates(slug);
   datesArray.map((date:string)=>{
-      blockDates.value.push(new Date(date))
+    const separeteDate = date.split('-');
+    if(separeteDate.length == 3){
+      const year = parseInt(separeteDate[0]!);
+      const month = parseInt(separeteDate[1]!) - 1;
+      const day = parseInt(separeteDate[2]!);
+      const completeDate = new Date(year,month,day);
+      blockDates.value.push(completeDate)
+    }
   })
+  console.log(blockDates.value)
 }
 
 
