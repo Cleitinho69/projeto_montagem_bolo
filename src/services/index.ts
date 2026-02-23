@@ -31,8 +31,12 @@ export const IndexService = {
     const data = (await api.post<EncomendaData>(`/${slug}/newencomenda`, dados)).data
     return data
   },
-  async getBlockDates(slug: string ) {
+  async getBlockDates(slug: string) {
     const data = (await api.get(`/${slug}/encomenda/blockdates`)).data
+    return data
+  },
+  async checkDateStatus(slug: string, date:string) {
+    const data = (await api.get(`/${slug}/encomenda/checkdate/${date}`)).data
     return data
   },
 }

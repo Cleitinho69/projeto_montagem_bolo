@@ -15,9 +15,9 @@ const router = useRouter()
 const confStore = useConfeitariaStore()
 const etapasStore = useEtapasStore()
 const encomendaStore = useEncomendaStore()
-const opcoesStore = useOpcoesStore();
+const opcoesStore = useOpcoesStore()
 
-const isEntrando = ref(true);
+const isEntrando = ref(true)
 
 const indexService = IndexService
 
@@ -26,12 +26,12 @@ const setColor = (primary: string, secondary: string) => {
     semantic: {
       primary: {
         500: primary,
-      }
-    }
+      },
+    },
   })
 
-  document.documentElement.style.setProperty('--color-primary', primary);
-  document.documentElement.style.setProperty('--color-secondary', secondary);
+  document.documentElement.style.setProperty('--color-primary', primary)
+  document.documentElement.style.setProperty('--color-secondary', secondary)
 }
 
 onMounted(async () => {
@@ -39,9 +39,10 @@ onMounted(async () => {
 
   const slug = route.params.confeitaria?.toString()
 
-  if (!slug) return router.push('/404').finally(() => {
-    isEntrando.value = false;
-  })
+  if (!slug)
+    return router.push('/404').finally(() => {
+      isEntrando.value = false
+    })
 
   if (slug == '404') return
 
@@ -58,12 +59,12 @@ onMounted(async () => {
     router.push('/404')
     throw new Error('Essa confeitaria não existe')
   } finally {
-    isEntrando.value = false;
+    isEntrando.value = false
   }
 })
 
 const backPage = () => {
-  if (faseAtual.value < etapasStore.etapas.length) {
+  if (faseAtual.value < etapasStore.etapas.length && faseAtual.value != 0) {
     router.push({
       name: 'Etapas',
       params: { ordem: encomendaStore.etapas.length + 1, confeitaria: confStore.slug },
@@ -83,14 +84,14 @@ const backPage = () => {
       name: 'Resumo',
       params: { confeitaria: confStore.slug },
     })
-  } else {
+  } else if (faseAtual.value == 0) {
     router.push({
-      name: 'Etapas',
-      params: { ordem: encomendaStore.etapas.length + 1, confeitaria: confStore.slug },
-    })
+      name: 'Datas',
+      params: { confeitaria: confStore.slug },
+    });
   }
 
-  isEntrando.value = false;
+  isEntrando.value = false
 
   setColor(confStore.cor_princ, confStore.cor_sec)
   document.title = confStore.nome
@@ -100,12 +101,13 @@ const resetAll = () => {
   encomendaStore.$reset()
   confStore.$reset()
   etapasStore.$reset()
-  opcoesStore.$reset();
+  opcoesStore.$reset()
 }
 </script>
 
 <template>
-  <div class="bg-white absolute inset-0 z-1000 flex justify-center items-center" v-if="isEntrando"><progress-spinner
-      strokeWidth="4" /></div>
+  <div class="bg-white absolute inset-0 z-1000 flex justify-center items-center" v-if="isEntrando">
+    <progress-spinner strokeWidth="4" />
+  </div>
   <router-view />
 </template>

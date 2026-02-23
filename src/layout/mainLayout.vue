@@ -18,7 +18,7 @@ const progress = computed(()=>{
     <div class="flex gap-2">
       <Avatar
         :image="confStore.logo_url"
-        class="!w-13 !h-13"
+        class="!w-13 !h-13 object-cover"
         shape="circle"
       />
       <!-- <Avatar :image="confStore.logo" size="large" shape="circle"/> -->

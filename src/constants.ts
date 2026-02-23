@@ -1,7 +1,7 @@
 import { ref, watch } from "vue"
 
 const faseSalva = localStorage.getItem("fase_usuario");
-export const faseAtual = ref(faseSalva ? parseInt(faseSalva) : 1);
+export const faseAtual = ref(faseSalva ? parseInt(faseSalva) : 0);
 
 export const criandoEncomenda = ref(false);
 
