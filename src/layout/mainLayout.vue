@@ -16,11 +16,12 @@ const progress = computed(()=>{
 <template>
   <header class="bg-primary h-25 rounded-b-[35px] flex justify-center items-center">
     <div class="flex gap-2">
-      <Avatar
+      <!-- <Avatar
         :image="confStore.logo_url"
         class="!w-13 !h-13 object-cover"
         shape="circle"
-      />
+      /> -->
+      <img :src="confStore.logo_url" alt="logo confeitaria" class="w-13 h-13 object-cover rounded-full">
       <!-- <Avatar :image="confStore.logo" size="large" shape="circle"/> -->
       <div class="flex flex-col justify-center text-white">
         <h1 class="text-xl font-bold">{{ confStore.nome }}</h1>

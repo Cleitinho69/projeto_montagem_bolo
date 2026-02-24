@@ -28,12 +28,13 @@ const etapasStore = useEtapasStore()
 const opcoesStore = useOpcoesStore()
 const indexService = IndexService
 
-const opcoesAtual = computed(() => {
-  return opcoesStore.opcoes.filter((op) => op.id_etapa == etapaAtual.value?.id)
-})
 
 const etapaAtual = computed(() => {
   return etapasStore.etapas.find((et) => et.ordem == props.ordem)
+})
+
+const opcoesAtual = computed(() => {
+  return opcoesStore.opcoes.filter((op) => op.id_etapa == etapaAtual.value?.id)
 })
 
 const opcoesEscolhidas = ref<OpcaoId[]>([])
@@ -49,15 +50,14 @@ watch(
         
         faseAtual.value = props.ordem;
 
-        opcoesEscolhidas.value =
-          encomendaStore.etapas.find((et) => et.id == etapaAtual.value?.id)?.opcoes ?? []
+        opcoesEscolhidas.value = encomendaStore.etapas.find((et) => et.id == etapaAtual.value?.id)?.opcoes ?? []
 
         opcoes.forEach((op) => opcoesStore.addOpcao(op, opcoesEscolhidas.value))
       }catch{
         proximaEtapa();
       }
     }
-  }
+  },{immediate: true}
 )
 
 const toogleOpcao = (opcao: Opcao) => {

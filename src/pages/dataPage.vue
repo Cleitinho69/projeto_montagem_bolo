@@ -11,6 +11,7 @@ import { date } from '@primeuix/themes/aura/datepicker'
 import LoadingSpinner from '@/components/loadingSpinner.vue'
 const primevue = usePrimeVue()
 const dadosClienteStore = useDadosClienteStore()
+const encomendaStore = useEncomendaStore();
 const formData = ref<ClienteData>({
   nome: dadosClienteStore.nome,
   telefone: dadosClienteStore.telefone,
@@ -64,6 +65,7 @@ const loading = ref(false)
 import { useToast } from 'primevue/usetoast'
 import router from '@/router'
 import { faseAtual } from '@/constants'
+import useEncomendaStore from '@/stores/encomenda.store'
 const toast = useToast()
 const dateValid = ref(false)
 
@@ -105,10 +107,7 @@ const next = () => {
     .push({
       name: 'Etapas',
       params: { ordem: 1, confeitaria: confStore.slug },
-    })
-    .then(() => {
-      faseAtual.value++
-    })
+    });
 }
 </script>
 

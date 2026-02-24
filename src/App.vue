@@ -64,31 +64,32 @@ onMounted(async () => {
 })
 
 const backPage = () => {
-  if (faseAtual.value < etapasStore.etapas.length && faseAtual.value != 0) {
-    router.push({
-      name: 'Etapas',
-      params: { ordem: encomendaStore.etapas.length + 1, confeitaria: confStore.slug },
-    })
-  } else if (faseAtual.value == etapasStore.etapas.length + 2) {
-    router.push({
-      name: 'Estilo',
-      params: { confeitaria: confStore.slug },
-    })
-  } else if (faseAtual.value == etapasStore.etapas.length + 3) {
-    router.push({
-      name: 'Finalizar',
-      params: { confeitaria: confStore.slug },
-    })
-  } else if (faseAtual.value == etapasStore.etapas.length + 4) {
-    router.push({
-      name: 'Resumo',
-      params: { confeitaria: confStore.slug },
-    })
-  } else if (faseAtual.value == 0) {
+  if (faseAtual.value == 0) {
     router.push({
       name: 'Datas',
       params: { confeitaria: confStore.slug },
-    });
+    })
+    if (faseAtual.value < etapasStore.etapas.length && faseAtual.value > 0) {
+      router.push({
+        name: 'Etapas',
+        params: { ordem: encomendaStore.etapas.length + 1, confeitaria: confStore.slug },
+      })
+    } else if (faseAtual.value == etapasStore.etapas.length + 2) {
+      router.push({
+        name: 'Estilo',
+        params: { confeitaria: confStore.slug },
+      })
+    } else if (faseAtual.value == etapasStore.etapas.length + 3) {
+      router.push({
+        name: 'Finalizar',
+        params: { confeitaria: confStore.slug },
+      })
+    } else if (faseAtual.value == etapasStore.etapas.length + 4) {
+      router.push({
+        name: 'Resumo',
+        params: { confeitaria: confStore.slug },
+      })
+    }
   }
 
   isEntrando.value = false
