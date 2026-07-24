@@ -64,10 +64,10 @@ const voltar = () => {
           <p class="text-caption line-clamp-3">
             {{ estilo.descricao }}
           </p>
-          <div class="text-sm font-semibold px-md py-2 rounded-2xl w-fit mt-2"
+          <!-- <div class="text-sm font-semibold px-md py-2 rounded-2xl w-fit mt-2"
             :class="estilo.select ? 'bg-primary text-white' : 'bg-white text-black'">{{
               estilo.valor > 0 ? '+R$ '+estilo.valor.toFixed(2).replace('.', ',') : 'Grátis' }}
-          </div>
+          </div> -->
         </div>
       </li>
     </ul>

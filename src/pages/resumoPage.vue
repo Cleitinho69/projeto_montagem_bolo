@@ -45,7 +45,7 @@ const generateWhatsAppLink = () => {
     `🍪 *Pedido:* #${encomendaStore.code}\n` +
     `👤 *Cliente:* ${clienteStore.nome}\n` +
     `🍰 *Estilo:* ${estiloStore.estilos.find(es => es.id == encomendaStore.estilo.id)?.titulo}\n` +
-    `💳 *Pagamento:* ${clienteStore.pagamento}\n\n` +
+    // `💳 *Pagamento:* ${clienteStore.pagamento}\n\n` +
     `Poderia me confirmar o recebimento?`
   );
 
@@ -75,7 +75,7 @@ const finalizar = async () => {
 
     const newEncomenda = {
       pagamento: clienteStore.pagamento,
-      observacoes: 'nada',
+      // observacoes: 'nada',
       data_entrega: (clienteStore.dataEntrega ? new Date(clienteStore.dataEntrega).toLocaleDateString() : '').toString().split('/').reverse().join('-'),
       cliente: {
         nome: clienteStore.nome,
@@ -148,17 +148,17 @@ const finalizar = async () => {
           <div class="w-10 h-10 bg-secondary/50 text-primary rounded-xl flex justify-center items-center">
             <i class="pi pi-map-marker"></i>
           </div>
-          <div v-if="clienteStore.recebimento == 'entrega'">
+          <div>
             <div class="text-xs">Endereço</div>
             <div class="font-semibold text-sm">{{ clienteStore.rua }}, {{ clienteStore.numero }} - {{
               clienteStore.referencia }}</div>
             <div class="font-semibold text-sm">{{ clienteStore.bairro }}, {{ clienteStore.cidade }}</div>
             <div class="font-semibold text-sm">Cep: {{ clienteStore.cep }}</div>
           </div>
-          <div v-else>
+          <!-- <div v-else>
             <div class="text-xs">Retirada</div>
             <div class="font-semibold text-sm">Confeitaria {{ confStore.nome }}</div>
-          </div>
+          </div> -->
         </li>
         <li class="flex items-center gap-3 min-h-15">
           <div class="w-10 h-10 bg-secondary/50 text-primary rounded-xl flex justify-center items-center">
@@ -172,7 +172,7 @@ const finalizar = async () => {
       </ul>
     </div>
 
-    <div class="card p-md rounded-2xl shadow-[0_5px_10px_2px_rgba(0,0,0,0.1)] mt-xl flex flex-col gap-6">
+    <div class="card p-md rounded-2xl shadow-[0_5px_10px_2px_rgba(0,0,0,0.1)] mt-xl flex flex-col gap-6 mb-6">
       <div class="flex items-center gap-3">
         <div
           class="flex justify-center items-center bg-linear-to-b from-primary/50 to-primary text-white rounded-2xl w-10 h-10 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.6)]">
@@ -188,13 +188,13 @@ const finalizar = async () => {
       </ul>
     </div>
 
-    <div
+    <!-- <div
       class="card bg-linear-to-b from-primary/50 to-primary text-white p-md rounded-2xl shadow-[0_5px_5px_1px_rgba(0,0,0,0.2)] flex justify-between items-cente mt-lg mb-6">
       <h3 class="text-2xl font-bold">Total:</h3>
       <div class="text-xl font-bold">R$ {{ (opcoesStore.valorOpcoes + estiloStore.valorEstilo).toFixed(2).replace('.',
         ',')
       }}</div>
-    </div>
+    </div> -->
 
     <div
       class="flex justify-center gap-3 fixed bottom-0 left-0 w-full p-md h-24 shadow-[0px_-1px_4px_0px_rgba(0,0,0,0.1)] bg-white z-100">

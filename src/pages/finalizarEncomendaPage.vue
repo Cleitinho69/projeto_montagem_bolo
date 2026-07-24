@@ -18,7 +18,7 @@ const formData = ref<ClienteData>({
   nome: dadosClienteStore.nome,
   telefone: dadosClienteStore.telefone,
   dataEntrega: dadosClienteStore.dataEntrega ? new Date(dadosClienteStore.dataEntrega) : null,
-  recebimento: dadosClienteStore.recebimento,
+  // recebimento: dadosClienteStore.recebimento,
   cep: dadosClienteStore.cep,
   rua: dadosClienteStore.rua,
   numero: dadosClienteStore.numero,
@@ -58,16 +58,15 @@ watch(
 )
 
 const bloquearResumo = computed(() => {
-  if (formData.value.nome == '' || formData.value.telefone == '' || formData.value.pagamento == '')
-    return true
-  if (formData.value.recebimento == 'entrega') {
-    if (formData.value.cep == '' || !formData.value.numero) return true
-  }
+  if (formData.value.nome == '' || formData.value.telefone == '' || formData.value.pagamento == "") return true
+  // if (formData.value.recebimento == 'entrega') {
+  //   if (formData.value.cep == '' || !formData.value.numero) return true
+  // }
   return false
 })
 
 const resumo = () => {
-  if (bloquearResumo.value) return
+  // if (bloquearResumo.value) return
   dadosClienteStore.addCliente(formData.value)
   router.push({ name: 'Resumo' }).then(() => {
     faseAtual.value++
@@ -122,7 +121,7 @@ const voltar = () => {
           </IconField>
         </div> -->
 
-        <div class="mt-md">
+        <!-- <div class="mt-md">
           <h2 class="text-lg font-bold">Forma de Recebimento</h2>
           <div class="flex items-center gap-2.5 mt-sm">
             <button
@@ -150,9 +149,9 @@ const voltar = () => {
               Retirada
             </button>
           </div>
-        </div>
+        </div> -->
 
-        <div class="mt-lg" v-if="formData.recebimento == 'entrega'">
+        <div class="mt-lg">
           <h2 class="text-xl font-bold">Endereço de entrega</h2>
 
           <div class="flex flex-col gap-2 mt-md">
@@ -227,12 +226,14 @@ const voltar = () => {
           </div>
         </div>
 
-        <div
+        <!-- <div
           class="py-2 mt-md text-primary bg-secondary border-2 border-primary rounded-lg text-center font-bold"
           v-else
         >
           Retirada na confeitaria {{ confStore.nome }} !!!
-        </div>
+        </div> -->
+
+        <!-- FORMA DE PAGAMENTO - CONFIGURAR LOGO -->
 
         <div class="mt-lg">
           <h2 class="text-xl font-bold">Método de pagamento*</h2>

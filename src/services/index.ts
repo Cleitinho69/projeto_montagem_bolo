@@ -29,6 +29,7 @@ export const IndexService = {
   },
   async addEncomenda(slug: string, dados: object) {
     const data = (await api.post<EncomendaData>(`/${slug}/newencomenda`, dados)).data
+    console.log(data);
     return data
   },
   async getBlockDates(slug: string) {

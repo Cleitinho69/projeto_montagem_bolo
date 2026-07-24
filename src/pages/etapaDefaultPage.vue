@@ -158,11 +158,11 @@ const voltarEtapa = () => {
             {{ opcao.descricao }}
           </div>
         </div>
-        <div class="h-10 flex justify-end items-center font-bold"
+        <!-- <div class="h-10 flex justify-end items-center font-bold"
           :class="opcao.select ? 'text-primary' : 'text-gray-500'">
           <span v-if="opcao.valor > 0"> +R$ {{ opcao.valor.toFixed(2).replace('.', ',') }} </span>
           <span v-else>Incluido</span>
-        </div>
+        </div> -->
       </li>
     </ul>
 
@@ -185,8 +185,8 @@ const voltarEtapa = () => {
         </div>
         <div class="grow flex justify-end items-center font-bold"
           :class="opcao.select ? 'text-primary' : 'text-gray-500'">
-          <span v-if="opcao.valor > 0"> +R$ {{ opcao.valor.toFixed(2).replace('.', ',') }} </span>
-          <span v-else>Incluido</span>
+          <!-- <span v-if="opcao.valor > 0"> +R$ {{ opcao.valor.toFixed(2).replace('.', ',') }} </span>
+          <span v-else>Incluido</span> -->
           <div class="ml-sm flex items-center justify-center rounded-full w-6 h-6 border-2 text-white"
             :class="opcao.select ? 'border-primary bg-primary' : 'border-gray-300'">
             <i class="pi pi-check" v-if="opcao.select"></i>

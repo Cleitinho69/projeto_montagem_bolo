@@ -8,7 +8,7 @@ const useConfeitariaStore = defineStore('confeitaria', {
     slug: '',
     cor_princ: '',
     cor_sec: '',
-    logo_url: '',
+    logo: '',
     telefone:'',
   }),
   actions: {

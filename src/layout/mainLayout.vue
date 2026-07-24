@@ -11,6 +11,8 @@ const etapasStore = useEtapasStore();
 const progress = computed(()=>{
   return (faseAtual.value*100)/(etapasStore.etapas.length+5);
 })
+
+console.log(confStore.logo)
 </script>
 
 <template>
@@ -21,7 +23,7 @@ const progress = computed(()=>{
         class="!w-13 !h-13 object-cover"
         shape="circle"
       /> -->
-      <img :src="confStore.logo_url" alt="logo confeitaria" class="w-13 h-13 object-cover rounded-full">
+      <img :src="confStore.logo" alt="logo confeitaria" class="w-13 h-13 object-cover rounded-full">
       <!-- <Avatar :image="confStore.logo" size="large" shape="circle"/> -->
       <div class="flex flex-col justify-center text-white">
         <h1 class="text-xl font-bold">{{ confStore.nome }}</h1>

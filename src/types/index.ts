@@ -4,7 +4,8 @@ export interface Confeitaria {
   slug: string,
   cor_princ: string,
   cor_sec: string,
-  logo_url: string,
+  // logo_url: string,
+  logo: string,
   telefone:string,
 }
 
@@ -48,14 +49,14 @@ export interface ClienteData {
   nome: string,
   telefone: string,
   dataEntrega: Date | null,
-  recebimento: string,
+  // recebimento: string,
   cep: string,
   rua: string,
   numero: string,
   bairro: string,
   cidade: string,
   referencia: string,
-  pagamento: string,
+  pagamento: string | null,
 }
 
 export interface EncomendaData {

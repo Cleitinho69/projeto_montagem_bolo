@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { AxiosInstance } from 'axios';
 
 // export const url = 'https://dash.bakerfast.com.br';
-export const url = 'http://localhost:8000';
+export const url = 'http://localhost:8001';
 
 const api: AxiosInstance = axios.create({
   baseURL: `${url}/api`,
